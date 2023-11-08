@@ -4,7 +4,7 @@ import kotlin.math.sign
 
 
 fun main() {
-    getAgeDetails()
+    rockPapaer();
 }
 
 fun getAgeDetails() {
@@ -18,5 +18,32 @@ fun getAgeDetails() {
         }
     } else {
         println("Age is not specified")
+    }
+}
+
+fun rockPapaer() {
+    var computerChoice = ""
+    var userChoice: String = readLine().toString()
+    var randomValue = (1..3).random();
+    if (randomValue == 1) {
+        computerChoice = "Rock"
+    } else if (randomValue == 2) {
+        computerChoice = "Paper"
+    } else if (randomValue == 3) {
+        computerChoice = "Scissors"
+    }
+    if (!userChoice.isNullOrBlank()) {
+        val winner = when {
+            userChoice == computerChoice -> "tie"
+            userChoice == "Rock" && computerChoice == "Paper" -> "you lose computer choice is ${computerChoice}"
+            userChoice == "Paper" && computerChoice == "Scissors" -> "You loose computerchoice is ${computerChoice}"
+            userChoice == "Scissors" && computerChoice == "Rock" -> "You loose Computer Choice is ${computerChoice}"
+            else -> {
+                "you won ${computerChoice}"
+            }
+        }
+        println(winner)
+    } else {
+        println("Please enter a valid input")
     }
 }
